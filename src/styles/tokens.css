@@ -1,0 +1,31 @@
+:root {
+  /* Color palette */
+  --color-primary: #0070f3;
+  --color-secondary: #7928ca;
+  --color-background: #ffffff;
+  --color-text: #222222;
+  --color-accent: #e2e8f0;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+
+  /* Typography */
+  --font-header: var(--font-inconsolata, 'Inconsolata');
+  --font-text: var(--font-fira-code, 'Fira Code');
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 32px;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+}
