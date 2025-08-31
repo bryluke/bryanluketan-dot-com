@@ -20,7 +20,6 @@ export default function ColorPicker() {
   const { accentColor, setAccentColor, mode } = useThemeStore()
   const [customColor, setCustomColor] = useState(accentColor)
 
-  // Update custom color when accent color changes externally
   useEffect(() => {
     setCustomColor(accentColor)
   }, [accentColor])
