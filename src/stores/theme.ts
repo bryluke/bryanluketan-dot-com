@@ -16,10 +16,8 @@ const applyThemeColors = (mode: ThemeMode, accentColor: string) => {
   const isDark = mode === 'dark'
   const variants = generateColorVariants(accentColor, isDark)
   
-  // Apply theme attribute
   document.documentElement.setAttribute('data-theme', mode)
   
-  // Apply color variants as CSS custom properties
   document.documentElement.style.setProperty('--color-accent-user', variants.base)
   document.documentElement.style.setProperty('--color-accent-light', variants.light)
   document.documentElement.style.setProperty('--color-accent-dark', variants.dark)
@@ -30,7 +28,7 @@ export const useThemeStore = create<ThemeStore>()(
   persist(
     (set, get) => ({
       mode: 'light',
-      accentColor: '#0070f3', // Default blue accent
+      accentColor: '#0070f3',
       setMode: (mode) => {
         set({ mode })
         applyThemeColors(mode, get().accentColor)
@@ -46,9 +44,8 @@ export const useThemeStore = create<ThemeStore>()(
       },
     }),
     {
-      name: 'theme-store', // localStorage key
+      name: 'theme-store',
       onRehydrateStorage: () => (state) => {
-        // Apply theme on page load
         if (state) {
           applyThemeColors(state.mode, state.accentColor)
         }

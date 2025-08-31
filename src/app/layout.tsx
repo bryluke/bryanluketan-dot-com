@@ -3,6 +3,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import "@/src/styles/globals.css";
 import { inconsolata, firaCode } from "@/src/styles/fonts";
+import Header from "@/src/components/Header";
+import Footer from "@/src/components/Footer";
 
 
 
@@ -47,7 +49,15 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        {children}
+        <Header />
+        <main style={{ 
+          paddingTop: 'var(--header-height)', 
+          paddingBottom: 'var(--footer-height)',
+          minHeight: '100vh'
+        }}>
+          {children}
+        </main>
+        <Footer />
         <SpeedInsights />
       </body>
     </html>

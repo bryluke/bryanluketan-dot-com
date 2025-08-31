@@ -1,0 +1,130 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: var(--color-background);
+  border-left: 1px solid var(--color-border);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+
+.menu.open {
+  right: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.title {
+  font-family: var(--font-header);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-user);
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  cursor: pointer;
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+.closeButton:hover {
+  background: var(--color-accent-subtle);
+}
+
+.nav {
+  flex: 1;
+  padding: var(--space-lg);
+}
+
+.section {
+  margin-bottom: var(--space-xl);
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-family: var(--font-header);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--space-md) 0;
+  opacity: 0.7;
+}
+
+.navLink {
+  display: block;
+  padding: var(--space-md);
+  font-family: var(--font-text);
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-sm);
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  background: var(--color-accent-subtle);
+  color: var(--color-accent-user);
+  transform: translateX(var(--space-sm));
+}
+
+.footer {
+  padding: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.footerText {
+  font-family: var(--font-text);
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  opacity: 0.6;
+  margin: 0;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 56rem) {
+  .backdrop,
+  .menu {
+    display: none;
+  }
+}

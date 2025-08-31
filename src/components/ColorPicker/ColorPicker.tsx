@@ -4,16 +4,15 @@ import { useThemeStore } from '@/src/stores/theme'
 import { adjustColorForTheme } from '@/src/utils/colorUtils'
 import styles from './ColorPicker.module.css'
 
-// HSL-based preset colors for better theme adaptation
 const PRESET_COLORS = [
-  '#0070f3', // Blue
-  '#7928ca', // Purple  
-  '#e74c3c', // Red
-  '#2ecc71', // Green
-  '#f39c12', // Orange
-  '#e91e63', // Pink
-  '#00bcd4', // Cyan
-  '#9c27b0', // Violet
+  '#0070f3',
+  '#7928ca',
+  '#e74c3c',
+  '#2ecc71',
+  '#f39c12',
+  '#e91e63',
+  '#00bcd4',
+  '#9c27b0',
 ]
 
 export default function ColorPicker() {
@@ -41,7 +40,6 @@ export default function ColorPicker() {
       
       <div className={styles.presets}>
         {PRESET_COLORS.map((color) => {
-          // Show theme-adjusted preview
           const adjustedColor = adjustColorForTheme(color, mode === 'dark')
           return (
             <button

@@ -1,7 +1,7 @@
 export type HSL = {
-  h: number // hue (0-360)
-  s: number // saturation (0-100)
-  l: number // lightness (0-100)
+  h: number
+  s: number
+  l: number
 }
 
 export function hexToHsl(hex: string): HSL {
@@ -67,18 +67,16 @@ export function adjustColorForTheme(color: string, isDark: boolean): string {
   const hsl = hexToHsl(color)
   
   if (isDark) {
-    // For dark mode: increase lightness, slightly reduce saturation
     return hslToHex({
       h: hsl.h,
-      s: Math.max(hsl.s - 10, 30), // Ensure minimum saturation
-      l: Math.max(hsl.l + 20, 60)   // Ensure minimum lightness
+      s: Math.max(hsl.s - 10, 30),
+      l: Math.max(hsl.l + 20, 60)
     })
   } else {
-    // For light mode: reduce lightness, increase saturation
     return hslToHex({
       h: hsl.h,
-      s: Math.min(hsl.s + 10, 80),  // Cap saturation
-      l: Math.min(hsl.l - 10, 50)   // Cap lightness for contrast
+      s: Math.min(hsl.s + 10, 80),
+      l: Math.min(hsl.l - 10, 50)
     })
   }
 }

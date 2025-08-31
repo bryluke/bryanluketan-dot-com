@@ -1,0 +1,245 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .header {
+  background: rgba(10, 10, 10, 0.9);
+}
+
+.container {
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-lg);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.logo {
+  font-family: var(--font-header);
+  font-size: var(--font-size-logo);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.logoText {
+  color: var(--color-accent-user);
+  transition: all 0.3s ease;
+  font-weight: inherit;
+}
+
+.logo:hover .logoText {
+  color: var(--color-accent-bright);
+}
+
+.logoAccent {
+  color: var(--color-accent-bright);
+  font-weight: 900;
+  margin: 0 2px;
+  transform: scale(1.2);
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.logo:hover .logoAccent {
+  transform: scale(1.4) rotate(180deg);
+  color: var(--color-accent-user);
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.navLink {
+  font-family: var(--font-text);
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  position: relative;
+  white-space: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.navLink:hover {
+  color: var(--color-accent-user);
+  background: var(--color-accent-subtle);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent-user);
+  transition: all 0.2s ease;
+  transform: translateX(-50%);
+}
+
+.navLink:hover::after {
+  width: 80%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+.mobileMenuButton:hover {
+  background: var(--color-accent-subtle);
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 24px;
+  height: 18px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-text);
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger span:nth-child(1) {
+  margin-bottom: 6px;
+}
+
+.hamburger span:nth-child(2) {
+  margin-bottom: 6px;
+}
+
+/* Hamburger animation when open */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+@media (min-width: 80rem) {
+  .logoAccent {
+    margin: 0 2px;
+  }
+
+  .desktopNav {
+    gap: var(--space-lg);
+  }
+
+  .navLink {
+    padding: var(--space-sm) var(--space-lg);
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 80rem) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .logoAccent {
+    margin: 0 1.5px;
+  }
+
+  .desktopNav {
+    gap: var(--space-md);
+  }
+
+  .navLink {
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .controls {
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 56rem) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: block;
+  }
+
+  .controls {
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 47.9375rem) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  .logoAccent {
+    margin: 0 1px;
+  }
+
+  .controls {
+    gap: var(--space-xs);
+  }
+}
