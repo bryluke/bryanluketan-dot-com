@@ -3,9 +3,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllPosts, getPostBySlug, getAdjacentPosts, type BlogPost } from '@/src/lib/blog'
+import { siteConfig } from '@/src/config/site'
 import styles from './post.module.css'
-
-const SITE_URL = 'https://bryanluketan.com'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -19,12 +18,12 @@ function generateJsonLd(post: BlogPost) {
     description: post.description,
     author: {
       '@type': 'Person',
-      name: 'Bryan Luke Tan',
-      url: SITE_URL,
+      name: siteConfig.author,
+      url: siteConfig.url,
     },
     datePublished: post.datetime,
     dateModified: post.datetime,
-    url: `${SITE_URL}/blog/${post.slug}`,
+    url: `${siteConfig.url}/blog/${post.slug}`,
     keywords: post.tags.join(', '),
     articleSection: post.category,
   }
@@ -43,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Post Not Found' }
   }
 
-  const url = `${SITE_URL}/blog/${slug}`
+  const url = `${siteConfig.url}/blog/${slug}`
 
   return {
     title: post.title,
@@ -56,7 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: post.description,
       type: 'article',
       publishedTime: post.datetime,
-      authors: ['Bryan Luke Tan'],
+      authors: [siteConfig.author],
       url,
     },
   }

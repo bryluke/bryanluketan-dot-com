@@ -71,8 +71,9 @@ The site provides an RSS feed at `/feed.xml` for subscribers.
 
 ### SEO & Analytics
 
+- **Site config**: Centralized in `src/config/site.ts` (url, name, description, author, email)
 - **JSON-LD**: Blog posts include `BlogPosting` structured data for rich search results
-- **Canonical URLs**: Each post has a canonical URL to prevent duplicate content
+- **Canonical URLs**: All pages have canonical URLs pointing to `www.` subdomain
 - **OpenGraph**: Posts have article-specific OG metadata (type, publishedTime, authors)
 - **Sitemap**: Dynamic sitemap at `/sitemap.xml` includes all posts, categories, and tags
 - **Analytics**: Vercel Analytics + Speed Insights (privacy-friendly, no cookies)

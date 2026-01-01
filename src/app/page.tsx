@@ -1,4 +1,12 @@
+import type { Metadata } from 'next'
+import { siteConfig } from '@/src/config/site'
 import styles from "./Home.module.css";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: siteConfig.url,
+  },
+}
 
 export default function Home() {
   return (

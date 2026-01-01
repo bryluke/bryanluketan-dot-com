@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts, getAllCategories, getAllTags } from '@/src/lib/blog'
-
-const SITE_URL = 'https://bryanluketan.com'
+import { siteConfig } from '@/src/config/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts()
@@ -10,25 +9,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: SITE_URL,
+      url: siteConfig.url,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: `${SITE_URL}/about`,
+      url: `${siteConfig.url}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/blog`,
+      url: `${siteConfig.url}/blog`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/projects`,
+      url: `${siteConfig.url}/projects`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
@@ -36,21 +35,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   const postPages: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug}`,
+    url: `${siteConfig.url}/blog/${post.slug}`,
     lastModified: new Date(post.datetime),
     changeFrequency: 'monthly',
     priority: 0.6,
   }))
 
   const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
-    url: `${SITE_URL}/blog/category/${category}`,
+    url: `${siteConfig.url}/blog/category/${category}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.5,
   }))
 
   const tagPages: MetadataRoute.Sitemap = tags.map((tag) => ({
-    url: `${SITE_URL}/blog/tag/${tag}`,
+    url: `${siteConfig.url}/blog/tag/${tag}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.4,

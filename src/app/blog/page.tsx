@@ -1,11 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllPosts } from '@/src/lib/blog'
+import { siteConfig } from '@/src/config/site'
 import styles from './blog.module.css'
 
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Thoughts on building, learning, and everything in between.',
+  alternates: {
+    canonical: `${siteConfig.url}/blog`,
+  },
 }
 
 function formatDatetime(datetimeString: string): string {

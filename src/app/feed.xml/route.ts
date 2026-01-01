@@ -1,8 +1,5 @@
 import { getAllPosts } from '@/src/lib/blog'
-
-const SITE_URL = 'https://bryanluketan.com'
-const SITE_TITLE = 'Bryan Luke Tan'
-const SITE_DESCRIPTION = 'Developing products of craft and purpose; building meaning with each block.'
+import { siteConfig } from '@/src/config/site'
 
 function escapeXml(text: string): string {
   return text
@@ -22,8 +19,8 @@ export async function GET() {
       return `
     <item>
       <title>${escapeXml(post.title)}</title>
-      <link>${SITE_URL}/blog/${post.slug}</link>
-      <guid isPermaLink="true">${SITE_URL}/blog/${post.slug}</guid>
+      <link>${siteConfig.url}/blog/${post.slug}</link>
+      <guid isPermaLink="true">${siteConfig.url}/blog/${post.slug}</guid>
       <description>${escapeXml(post.description)}</description>
       <pubDate>${pubDate}</pubDate>
       <category>${escapeXml(post.category)}</category>
@@ -34,12 +31,12 @@ export async function GET() {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${escapeXml(SITE_TITLE)}</title>
-    <link>${SITE_URL}</link>
-    <description>${escapeXml(SITE_DESCRIPTION)}</description>
+    <title>${escapeXml(siteConfig.name)}</title>
+    <link>${siteConfig.url}</link>
+    <description>${escapeXml(siteConfig.description)}</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="${siteConfig.url}/feed.xml" rel="self" type="application/rss+xml"/>
     ${items}
   </channel>
 </rss>`

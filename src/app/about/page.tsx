@@ -1,9 +1,13 @@
 import type { Metadata } from 'next'
+import { siteConfig } from '@/src/config/site'
 import styles from './about.module.css'
 
 export const metadata: Metadata = {
   title: 'About',
   description: 'The longer story — developer, builder, learner.',
+  alternates: {
+    canonical: `${siteConfig.url}/about`,
+  },
 }
 
 export default function AboutPage() {

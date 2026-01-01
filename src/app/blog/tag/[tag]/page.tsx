@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostsByTag, getAllTags } from '@/src/lib/blog'
 import { isValidTag, type Tag } from '@/src/content/config'
+import { siteConfig } from '@/src/config/site'
 import styles from '../../blog.module.css'
 
 interface PageProps {
@@ -24,6 +25,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `#${tag} posts`,
     description: `Blog posts tagged with ${tag}.`,
+    alternates: {
+      canonical: `${siteConfig.url}/blog/tag/${tag}`,
+    },
   }
 }
 

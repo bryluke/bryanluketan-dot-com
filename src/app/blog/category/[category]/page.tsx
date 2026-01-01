@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostsByCategory, getAllCategories } from '@/src/lib/blog'
 import { isValidCategory } from '@/src/content/config'
+import { siteConfig } from '@/src/config/site'
 import styles from '../../blog.module.css'
 
 interface PageProps {
@@ -26,6 +27,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${formattedCategory} posts`,
     description: `Blog posts in the ${formattedCategory} category.`,
+    alternates: {
+      canonical: `${siteConfig.url}/blog/category/${category}`,
+    },
   }
 }
 

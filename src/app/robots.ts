@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
- 
+import { siteConfig } from '@/src/config/site'
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://bryanluketan.com/sitemap.xml',
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   }
 }

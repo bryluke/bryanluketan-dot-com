@@ -6,30 +6,29 @@ import "@/src/styles/globals.css";
 import { inconsolata, firaCode } from "@/src/styles/fonts";
 import Header from "@/src/components/Header";
 import Footer from "@/src/components/Footer";
-
-
+import { siteConfig } from "@/src/config/site";
 
 export const metadata: Metadata = {
   title: {
-    default: "Bryan Luke Tan",
-    template: "%s | Bryan Luke Tan"
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`
   },
-  description: "Developing products of craft and purpose; building meaning with each block.",
+  description: siteConfig.description,
   keywords: ["Bryan Luke Tan", "developer", "software engineering", "portfolio", "blog", "career switching", "web development"],
-  authors: [{ name: "Bryan Luke Tan" }],
-  creator: "Bryan Luke Tan",
+  authors: [{ name: siteConfig.author }],
+  creator: siteConfig.author,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://bryanluketan.com",
-    title: "Bryan Luke Tan",
-    description: "Developing products of craft and purpose; building meaning with each block.",
-    siteName: "Bryan Luke Tan",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
   },
   twitter: {
     card: "summary",
-    title: "Bryan Luke Tan",
-    description: "Developing products of craft and purpose; building meaning with each block.",
+    title: siteConfig.name,
+    description: siteConfig.description,
   },
   robots: {
     index: true,
