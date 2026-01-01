@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 pnpm dev      # Start development server with Turbopack (http://localhost:3000)
-pnpm build    # Build for production with Turbopack
+pnpm build    # Build for production (Turbopack disabled due to stability issues)
 pnpm start    # Start production server
 ```
 
