@@ -24,6 +24,13 @@
 - Custom 404 page
 - About page
 
+### Blog System
+- MDX-based blog with gray-matter + next-mdx-remote
+- Post listing with date, category, and description
+- Individual post pages with full MDX rendering
+- Frontmatter: title, description, date, category, tags, published, slug (optional)
+- Posts stored in `src/content/blog/`
+
 ### SEO & PWA
 - Metadata, robots.txt, sitemap.xml
 - PWA manifest and icons
@@ -35,15 +42,18 @@
 
 ### Core Pages
 - Projects page with portfolio showcase
-- Blog page with article listing
 
 ### Content
-- MDX setup for blog posts and project descriptions
-- Content collection system
+- MDX for project descriptions
 
 ### Navigation
 - Page transition animations
 - Breadcrumb navigation
+
+### Zettelkasten Features
+- Wiki-style links (`[[slug]]`) between posts
+- Backlink indexing and display
+- Link graph visualization
 
 ### Enhancements
 - Image galleries with lightbox

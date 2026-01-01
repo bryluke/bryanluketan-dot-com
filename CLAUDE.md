@@ -47,6 +47,16 @@ Components use barrel exports (`index.ts`). Key components:
 
 Navigation uses `usePathname()` to detect active page. Active items render as `<span>` (not clickable) instead of `<Link>`.
 
+### Blog System
+
+MDX-based blog using `gray-matter` (frontmatter parsing) + `next-mdx-remote` (rendering).
+
+- **Posts location**: `src/content/blog/*.mdx`
+- **Blog lib** (`src/lib/blog.ts`): `getAllPosts()`, `getPostBySlug()`, `getPostsByCategory()`, `getPostsByTag()`
+- **Frontmatter**: title, description, date, category, tags, published, slug (optional, defaults to filename)
+- **Unpublished posts**: Set `published: false` to hide from listing
+- **Strict validation**: Categories and tags must be defined in `src/content/config.ts`. Build fails on unknown values.
+
 ### Path Aliases
 
 Use `@/src/` for imports (e.g., `import { useThemeStore } from '@/src/stores/theme'`).

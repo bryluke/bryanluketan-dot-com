@@ -4,6 +4,7 @@ Documentation for the Digital Garden project.
 
 ## Available Docs
 
+- [**Blog System**](./blog-system.md) - Writing posts, categories, tags, and validation
 - [**Color System Guide**](./color-system.md) - HSL-based dynamic theming system
 - [**Project Roadmap**](../ROADMAP.md) - Current state and future plans
 
