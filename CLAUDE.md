@@ -28,6 +28,8 @@ The site features an HSL-based dynamic theme system inspired by Arc Browser:
   - `--color-accent-user` (theme-adjusted main color)
   - `--color-accent-light`, `--color-accent-dark`, `--color-accent-subtle`
 
+- **FOUC Prevention** (`src/app/layout.tsx`): A blocking script in `<head>` reads localStorage and applies theme/colors before paint. This duplicates the color logic from `colorUtils.ts`—if formulas change there, update the script too.
+
 ### Styling
 
 - **CSS Layers**: Uses `@layer reset, base` in `globals.css` for cascade organization
@@ -38,10 +40,12 @@ The site features an HSL-based dynamic theme system inspired by Arc Browser:
 ### Component Structure
 
 Components use barrel exports (`index.ts`). Key components:
-- `Header/Footer`: Fixed layout with responsive design
+- `Header/Footer`: Fixed layout with responsive design, active nav highlighting
 - `MobileMenu`: Slide-out drawer for mobile navigation
 - `ThemeToggle`: Light/dark mode switch
 - `ColorPicker/ColorPickerDropdown`: Accent color selection
+
+Navigation uses `usePathname()` to detect active page. Active items render as `<span>` (not clickable) instead of `<Link>`.
 
 ### Path Aliases
 

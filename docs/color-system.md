@@ -85,6 +85,14 @@ interface ThemeStore {
 - Automatically restored on page load
 - Theme applied to document on hydration
 
+#### FOUC Prevention
+To prevent flash of unstyled content on navigation, a blocking script in `src/app/layout.tsx` runs before paint:
+1. Reads theme state from localStorage
+2. Applies `data-theme` attribute
+3. Calculates and sets all color CSS custom properties
+
+This script duplicates the color formulas from `colorUtils.ts`. If the formulas change, update both locations.
+
 ### 5. Component Integration
 
 #### Using Dynamic Colors in CSS
