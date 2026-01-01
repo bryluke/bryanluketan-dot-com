@@ -1,139 +1,109 @@
-# Bryan Luke Tan - Digital Garden
+# Bryan Luke Tan - Personal Website
 
-A personal "digital garden" built with Next.js, serving as a space for my profile and blog first.
+A personal website and blog built with Next.js, serving as a space for writing, projects, and experimentation.
 
-I am hoping this will grow into my portfolio, freelance services, projects, and coding sandbox.
+## Features
 
-This site is designed to be minimal yet powerful, with room for experimentation and growth.
+- **Dynamic Theme System** - Light/dark mode with customizable accent colors (HSL-based)
+- **MDX Blog** - Write posts in MDX with frontmatter, categories, and tags
+- **RSS Feed** - Subscribe at `/feed.xml`
+- **SEO Optimized** - JSON-LD, canonical URLs, dynamic sitemap, OpenGraph
+- **Privacy-Friendly Analytics** - Vercel Analytics + Speed Insights (no cookies)
+- **PWA Ready** - Installable with manifest and icons
 
-## ✨ Features
-
-- **🎨 Dynamic Theme System** - Light/dark mode with customizable accent colors
-- **🎯 HSL-based Color Management** - Automatic contrast adjustment for accessibility
-- **📱 Progressive Web App** - Installable with proper manifest and icons
-- **🚀 Performance Optimized** - Built on Next.js 15 with Turbopack
-- **♿ Accessibility First** - Semantic HTML, proper ARIA labels, keyboard navigation
-- **🔍 SEO Ready** - Comprehensive metadata, sitemap, robots.txt
-
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
-- **Styling**: Vanilla CSS with CSS Layers (reset, base)
-- **State Management**: Zustand for theme management
-- **Fonts**: Fira Code & Inconsolata via next/font/google
-- **Analytics**: Vercel Speed Insights
-- **Package Manager**: pnpm
+- **Styling**: Vanilla CSS with CSS Layers
+- **State**: Zustand (theme persistence)
+- **Blog**: MDX via gray-matter + next-mdx-remote
+- **Analytics**: Vercel Analytics + Speed Insights
+- **Hosting**: Vercel
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- pnpm (recommended)
-
-### Installation
+## Getting Started
 
 ```bash
-# Clone the repository
-git clone https://github.com/bryluke/bryanluketan-dot-com.git
-cd bryanluketan-dot-com
-
 # Install dependencies
 pnpm install
 
 # Start development server
 pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
-
-### Build for Production
-
-```bash
-# Build the application
+# Build for production
 pnpm build
-
-# Start production server
-pnpm start
 ```
 
-## 📁 Project Structure
+Open [http://localhost:3000](http://localhost:3000)
+
+## Project Structure
 
 ```
-├── docs/                    # Documentation
-├── public/                  # Static assets
-│   └── assets/             # Images, icons, textures
-├── src/
-│   ├── app/                # Next.js App Router pages
-│   │   ├── layout.tsx      # Root layout with metadata
-│   │   ├── page.tsx        # Home page
-│   │   ├── manifest.ts     # PWA manifest
-│   │   ├── robots.ts       # SEO robots.txt
-│   │   └── sitemap.ts      # SEO sitemap
-│   ├── components/         # Reusable React components
-│   │   ├── ThemeToggle/    # Light/dark mode toggle
-│   │   └── ColorPicker/    # Accent color selection
-│   ├── stores/             # Zustand state management
-│   │   └── theme.ts        # Theme and color state
-│   ├── styles/             # CSS files
-│   │   ├── tokens.css      # Design system tokens
-│   │   ├── globals.css     # Global styles with CSS layers
-│   │   └── fonts.ts        # Font configurations
-│   └── utils/              # Utility functions
-│       └── colorUtils.ts   # HSL color manipulation
-└── ROADMAP.md              # Development roadmap
+src/
+├── app/                    # Next.js App Router
+│   ├── blog/              # Blog listing and posts
+│   │   ├── [slug]/        # Individual post pages
+│   │   ├── category/      # Category filter pages
+│   │   └── tag/           # Tag filter pages
+│   ├── about/             # About page
+│   ├── feed.xml/          # RSS feed route
+│   ├── sitemap.ts         # Dynamic sitemap
+│   └── robots.ts          # Robots.txt
+├── components/            # React components
+├── config/                # Site configuration
+│   └── site.ts            # Centralized site config (url, name, etc.)
+├── content/               # Content files
+│   ├── blog/              # MDX blog posts
+│   └── config.ts          # Valid categories and tags
+├── lib/                   # Utilities
+│   └── blog.ts            # Blog data functions
+├── stores/                # Zustand stores
+└── styles/                # CSS files and tokens
 ```
 
-## 🎨 Design System
+## Writing Blog Posts
 
-This project features a sophisticated design system built on CSS custom properties and HSL color manipulation:
+Create a new `.mdx` file in `src/content/blog/`:
 
-- **CSS Tokens**: Centralized design variables in `src/styles/tokens.css`
-- **CSS Layers**: Organized styling with reset, base, and component layers
-- **Dynamic Colors**: Theme-aware accent colors with automatic contrast adjustment
-- **Typography**: Custom font loading with fallbacks
-
-For detailed information about the color system, see [docs/color-system.md](./docs/color-system.md).
-
-## 📚 Documentation
-
-- [Color System Guide](./docs/color-system.md) - Comprehensive guide to the HSL-based theme system
-- [Development Roadmap](./ROADMAP.md) - Project milestones and future plans
-
-## 🚦 Development Status
-
-**Current Phase**: Foundation Complete ✅
-- [x] Basic site structure and styling
-- [x] Dynamic theme system with color picker
-- [x] SEO optimization and PWA setup
-- [x] Performance monitoring
-
-**Next Phase**: Core Pages & Navigation
-- [ ] Main navigation component
-- [ ] About, Projects, Blog, Services pages
-- [ ] Content management system
-
-See [ROADMAP.md](./ROADMAP.md) for complete development timeline.
-
-## 🤝 Contributing
-
-This is a personal project, but I welcome feedback and suggestions! Feel free to:
-
-- Open issues for bugs or feature requests
-- Share ideas for design improvements
-- Suggest optimizations or best practices
-
-## 📄 License
-
-This project is private and proprietary. All rights reserved.
-
-However, if you feel like you want to use anything that I've created, I'm happy for you to just copy and paste it. Most of these were built through leveraging a lot of documentation and AI to teach me how to progress anyway (and I also don't know how to better share stuff I build at this point in time).
-
-## 🔗 Connect
-
-- **Website**: [bryanluketan.com](https://bryanluketan.com)
-- **Email**: [Hit me up!](hello@bryanluketan.com)
-
+```mdx
+---
+title: "Post Title"
+description: "Brief description"
+datetime: "2025-01-01T10:00:00"
+category: "tech"
+tags: ["typescript", "web-dev"]
+published: true
 ---
 
-*Built with intentionality to grow as a web developer in this new age with the advent of AI. Hence, the code is not my own, yet not lazily implemented.*
+Your content here...
+```
+
+Categories and tags must be defined in `src/content/config.ts`.
+
+## Configuration
+
+Site-wide settings are centralized in `src/config/site.ts`:
+
+```ts
+export const siteConfig = {
+  url: 'https://www.bryanluketan.com',
+  name: 'Bryan Luke Tan',
+  description: '...',
+  author: 'Bryan Luke Tan',
+  email: 'hello@bryanluketan.com',
+}
+```
+
+## Documentation
+
+- [ROADMAP.md](./ROADMAP.md) - What's built and what's next
+- [CLAUDE.md](./CLAUDE.md) - Technical documentation for AI assistants
+
+## License
+
+This project is personal and proprietary. Feel free to reference or adapt patterns for your own projects.
+
+## Connect
+
+- **Website**: [www.bryanluketan.com](https://www.bryanluketan.com)
+- **Email**: hello@bryanluketan.com

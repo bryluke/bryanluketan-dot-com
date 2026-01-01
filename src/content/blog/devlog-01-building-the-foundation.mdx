@@ -1,0 +1,178 @@
+---
+title: "Devlog #1: Building the Foundation"
+description: "Setting up a personal site with Next.js, a dynamic theme system, MDX blogging, and SEO fundamentals."
+datetime: "2025-01-01T10:00:00"
+category: "tech"
+tags: ["nextjs", "typescript", "building-in-public", "web-dev"]
+published: true
+---
+
+This is the first devlog for bryanluketan.com — documenting how I built this site from scratch. The goal: a minimal personal site with a blog, good SEO, and room to grow.
+
+I must caveat that I'm leveraging AI for inspiration and help in the implementation. I'm not some super juiced programmer that has seen the ancient magicks hand-woven together to create this wondrous digital world we all live in. Rather, I'm just a job changer that managed to self-learn enough to get into the industry and start contributing.
+
+I am proud to say that I learned web development with JS DOM for a good 3 months and built multiple apps without React, all within a time where AI was not yet around. I have the awkward, short glimpse of what coding was like referencing documentation, hunting for answers in StackOverflow, and sitting for hours before realising that I screwed up with a single character somewhere in my code. Yet, I also am now part of this equally disorienting reality of vibe code, mega technological jumps, and massive hype around AI.
+
+I'm just here looking to learn, building my own thing in my small little corner of the internet I get to call my own. If you're reading this, thanks! I hope that slowly, but surely, I'll grow to give more tangible value in the things I build and write. Now onto the meat...
+
+## The Stack
+
+- **Next.js 15** with App Router
+- **TypeScript** throughout
+- **Vanilla CSS** with CSS Layers (no Tailwind, no CSS-in-JS)
+- **Zustand** for theme state management
+- **MDX** for blog posts via gray-matter + next-mdx-remote
+- **Vercel** for hosting, analytics, and speed insights
+
+## Theme System
+
+The site has a dynamic theme system inspired by Arc Browser. Users can:
+
+1. Toggle between light and dark mode
+2. Pick a custom accent color
+
+The accent color is stored in HSL and automatically adjusted for contrast — lighter in dark mode, more saturated in light mode. Four variants are generated:
+
+```css
+--color-accent-user    /* main, contrast-adjusted */
+--color-accent-light   /* +30 lightness */
+--color-accent-dark    /* -30 lightness */
+--color-accent-subtle  /* low saturation, for backgrounds */
+```
+
+Theme state persists to localStorage via Zustand, and a blocking script in `<head>` applies it before first paint to prevent flash of unstyled content.
+
+## Blog System
+
+I wanted a blog that's:
+
+- Version-controlled (just MDX files in a folder)
+- Type-safe (validated categories and tags)
+- Fast (server-rendered, no client JS for content)
+
+### File Structure
+
+```
+src/content/
+  blog/
+    hello-world.mdx
+    devlog-01-building-the-foundation.mdx
+  config.ts  # defines valid categories and tags
+src/lib/
+  blog.ts    # parsing and query functions
+```
+
+### Frontmatter
+
+Each post has typed frontmatter:
+
+```yaml
+---
+title: "Post Title"
+description: "For listings and SEO"
+datetime: "2025-01-01T10:00:00"
+category: "tech"
+tags: ["typescript", "nextjs"]
+published: true
+---
+```
+
+The `datetime` field (not just date) allows multiple posts per day with correct ordering. The `published` flag hides drafts without deleting them.
+
+### Strict Validation
+
+Categories and tags are defined in `src/content/config.ts`. If I typo a tag, the build fails:
+
+```
+Invalid tag "typsecript" in my-post.mdx.
+Allowed tags: typescript, javascript, react, ...
+```
+
+This is intentional friction — it prevents tag sprawl and keeps taxonomy deliberate.
+
+## Blog Features
+
+Beyond basic listing and rendering, the blog includes:
+
+### Filter Pages
+
+- `/blog/category/[category]` — browse by category
+- `/blog/tag/[tag]` — browse by tag
+
+Categories and tags in post headers are clickable links.
+
+### Reading Time
+
+Estimated reading time (at 200 wpm) shown on listings and posts.
+
+### Previous/Next Navigation
+
+Each post has links to adjacent posts at the bottom for easy browsing.
+
+### RSS Feed
+
+Available at `/feed.xml` with autodiscovery in the HTML head. Includes title, description, date, and category for each post.
+
+## SEO Setup
+
+### Site Configuration
+
+All site-wide values are centralized in `src/config/site.ts`:
+
+```typescript
+export const siteConfig = {
+  url: 'https://www.bryanluketan.com',
+  name: 'Bryan Luke Tan',
+  description: '...',
+  author: 'Bryan Luke Tan',
+  email: 'hello@bryanluketan.com',
+}
+```
+
+This is imported everywhere — changing the URL in one place updates sitemap, RSS, canonical URLs, and all metadata.
+
+### Canonical URLs
+
+Every page has a canonical URL pointing to the `www.` subdomain. Vercel redirects the apex domain to www, so canonicals match.
+
+### JSON-LD
+
+Blog posts include structured data for rich search results:
+
+```json
+{
+  "@type": "BlogPosting",
+  "headline": "...",
+  "author": { "@type": "Person", "name": "Bryan Luke Tan" },
+  "datePublished": "...",
+  "url": "..."
+}
+```
+
+### Dynamic Sitemap
+
+The sitemap at `/sitemap.xml` is generated dynamically and includes:
+
+- Static pages (home, about, blog)
+- All published blog posts (with actual publish date)
+- All category pages
+- All tag pages
+
+## Analytics
+
+Using Vercel Analytics + Speed Insights. Both are privacy-friendly (no cookies, no consent banner needed) and integrate with one line each in the root layout.
+
+## What's Next
+
+The foundation is solid. Future additions might include:
+
+- Code syntax highlighting
+- Table of contents for long posts
+- Related posts by shared tags
+- Newsletter signup
+
+But for now, the site works. I can write, commit, and deploy.
+
+---
+
+The code is in [the repo](https://github.com/bryluke/bryanluketan-dot-com) if you want to dig deeper.
