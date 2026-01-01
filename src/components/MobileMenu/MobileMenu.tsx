@@ -12,9 +12,15 @@ interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
   navItems: NavItem[]
+  pathname: string
 }
 
-export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, navItems, pathname }: MobileMenuProps) {
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/'
+    return pathname.startsWith(href)
+  }
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -52,26 +58,37 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
         <nav className={styles.nav}>
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Main</h3>
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={styles.navLink}
-                onClick={onClose}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              isActive(item.href) ? (
+                <span
+                  key={item.href}
+                  className={`${styles.navLink} ${styles.navLinkActive}`}
+                  aria-current="page"
+                >
+                  {item.label}
+                </span>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={styles.navLink}
+                  onClick={onClose}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </div>
 
           <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>More</h3>
-            <Link href="/contact" className={styles.navLink} onClick={onClose}>
-              Contact
-            </Link>
-            <Link href="/sitemap" className={styles.navLink} onClick={onClose}>
-              Sitemap
-            </Link>
+            <h3 className={styles.sectionTitle}>Contact</h3>
+            <a
+              href="mailto:hello@bryanluketan.com"
+              className={styles.navLink}
+              onClick={onClose}
+            >
+              hello@bryanluketan.com
+            </a>
           </div>
         </nav>
 

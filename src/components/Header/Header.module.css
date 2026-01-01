@@ -115,6 +115,19 @@
   width: 80%;
 }
 
+.navLinkActive {
+  color: var(--color-accent-user);
+  cursor: default;
+}
+
+.navLinkActive::after {
+  width: 80%;
+}
+
+.navLinkActive:hover {
+  background: transparent;
+}
+
 .controls {
   display: flex;
   align-items: center;

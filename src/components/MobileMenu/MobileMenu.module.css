@@ -102,6 +102,16 @@
   transform: translateX(var(--space-sm));
 }
 
+.navLinkActive {
+  color: var(--color-accent-user);
+  background: var(--color-accent-subtle);
+  cursor: default;
+}
+
+.navLinkActive:hover {
+  transform: none;
+}
+
 .footer {
   padding: var(--space-lg);
   border-top: 1px solid var(--color-border);

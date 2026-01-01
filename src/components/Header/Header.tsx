@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import ThemeToggle from '@/src/components/ThemeToggle'
 import ColorPickerDropdown from '@/src/components/ColorPickerDropdown'
@@ -16,9 +17,15 @@ const NAV_ITEMS = [
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/'
+    return pathname.startsWith(href)
   }
 
   return (
@@ -33,15 +40,25 @@ export default function Header() {
         </Link>
 
         <nav className={styles.desktopNav}>
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={styles.navLink}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {NAV_ITEMS.map((item) =>
+            isActive(item.href) ? (
+              <span
+                key={item.href}
+                className={`${styles.navLink} ${styles.navLinkActive}`}
+                aria-current="page"
+              >
+                {item.label}
+              </span>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={styles.navLink}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <div className={styles.controls}>
@@ -63,10 +80,11 @@ export default function Header() {
         </div>
       </div>
 
-      <MobileMenu 
-        isOpen={isMobileMenuOpen} 
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         navItems={NAV_ITEMS}
+        pathname={pathname}
       />
     </header>
   )
