@@ -14,7 +14,7 @@ No test or lint commands are currently configured.
 
 ## Architecture
 
-This is a Next.js 15 personal website using the App Router, vanilla CSS with CSS layers, and Zustand for state management.
+This is a Next.js 15 (stable) personal website using the App Router, vanilla CSS with CSS layers, and Zustand for state management.
 
 ### Theme System
 

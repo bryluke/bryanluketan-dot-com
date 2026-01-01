@@ -3,7 +3,7 @@
 ## What's Built
 
 ### Foundation
-- Next.js 16 with App Router and Turbopack
+- Next.js 15 with App Router
 - Vanilla CSS architecture with CSS layers (reset, base)
 - Design tokens system (`src/styles/tokens.css`) with fluid typography using `clamp()`
 - Custom fonts: Fira Code, Inconsolata via `next/font`
