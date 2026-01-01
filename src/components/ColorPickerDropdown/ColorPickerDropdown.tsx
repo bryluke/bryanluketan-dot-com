@@ -19,7 +19,20 @@ export default function ColorPickerDropdown() {
   const { accentColor, setAccentColor, mode } = useThemeStore()
   const [isOpen, setIsOpen] = useState(false)
   const [customColor, setCustomColor] = useState(accentColor)
+  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, right: 0 })
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+
+  // Calculate dropdown position when opened
+  const updateDropdownPosition = () => {
+    if (triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect()
+      setDropdownPosition({
+        top: rect.bottom + 8, // 8px gap
+        right: window.innerWidth - rect.right
+      })
+    }
+  }
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -29,12 +42,20 @@ export default function ColorPickerDropdown() {
       }
     }
 
+    const handleResize = () => {
+      if (isOpen) {
+        updateDropdownPosition()
+      }
+    }
+
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside)
+      window.addEventListener('resize', handleResize)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
+      window.removeEventListener('resize', handleResize)
     }
   }, [isOpen])
 
@@ -55,13 +76,21 @@ export default function ColorPickerDropdown() {
     setAccentColor(color)
   }
 
+  const handleToggleOpen = () => {
+    if (!isOpen) {
+      updateDropdownPosition()
+    }
+    setIsOpen(!isOpen)
+  }
+
   const currentColorAdjusted = adjustColorForTheme(accentColor, mode === 'dark')
 
   return (
     <div className={styles.container} ref={dropdownRef}>
       <button
+        ref={triggerRef}
         className={styles.trigger}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggleOpen}
         aria-label="Open color picker"
         aria-expanded={isOpen}
         style={{ borderColor: currentColorAdjusted }}
@@ -73,7 +102,13 @@ export default function ColorPickerDropdown() {
       </button>
 
       {isOpen && (
-        <div className={styles.dropdown}>
+        <div 
+          className={styles.dropdown}
+          style={{
+            top: `${dropdownPosition.top}px`,
+            right: `${dropdownPosition.right}px`
+          }}
+        >
           <div className={styles.presets}>
             {PRESET_COLORS.map((color) => {
               const adjustedColor = adjustColorForTheme(color, mode === 'dark')

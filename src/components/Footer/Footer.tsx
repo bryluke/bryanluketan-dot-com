@@ -7,7 +7,7 @@ const QUICK_NAV_ITEMS = [
   { href: '/about', label: 'About', icon: '👤' },
   { href: '/projects', label: 'Projects', icon: '💼' },
   { href: '/blog', label: 'Blog', icon: '📝' },
-  { href: '/contact', label: 'Contact', icon: '💬' },
+  { href: 'mailto:hello@bryanluketan.com', label: 'Contact', icon: '✉️' },
 ]
 
 export default function Footer() {
@@ -19,12 +19,9 @@ export default function Footer() {
             © 2025 Bryan Luke Tan | Of craft and purpose.
           </p>
           <div className={styles.links}>
-            <Link href="/contact" className={styles.link}>
-              Contact
-            </Link>
-            <Link href="/sitemap" className={styles.link}>
-              Sitemap
-            </Link>
+            <a href="mailto:hello@bryanluketan.com" className={styles.link}>
+              hello@bryanluketan.com
+            </a>
           </div>
         </div>
       </div>

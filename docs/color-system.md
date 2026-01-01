@@ -45,19 +45,25 @@ The adjusted colors are applied as CSS custom properties:
 
 ### 3. Color Adjustment Formulas
 
-#### Light Mode Formula
-```typescript
-lightMode = {
-  saturation: min(original + 10%, 80%),  // Cap at 80%
-  lightness: min(original - 10%, 50%)    // Cap at 50% for contrast
-}
-```
+From `src/utils/colorUtils.ts`:
 
-#### Dark Mode Formula  
 ```typescript
-darkMode = {
-  saturation: max(original - 10%, 30%),  // Minimum 30%
-  lightness: max(original + 20%, 60%)    // Minimum 60% for visibility
+export function adjustColorForTheme(color: string, isDark: boolean): string {
+  const hsl = hexToHsl(color)
+
+  if (isDark) {
+    return hslToHex({
+      h: hsl.h,
+      s: Math.max(hsl.s - 10, 30),  // Minimum 30% saturation
+      l: Math.max(hsl.l + 20, 60)   // Minimum 60% lightness for visibility
+    })
+  } else {
+    return hslToHex({
+      h: hsl.h,
+      s: Math.min(hsl.s + 10, 80),  // Cap at 80% saturation
+      l: Math.min(hsl.l - 10, 50)   // Cap at 50% lightness for contrast
+    })
+  }
 }
 ```
 
@@ -182,9 +188,3 @@ document.documentElement.style.setProperty('--color-accent-vibrant', variants.vi
 2. Adjust the minimum/maximum lightness values
 3. Test with actual users in different lighting conditions
 
-## Future Enhancements
-
-- [ ] Add color blindness simulation
-- [ ] Implement automatic dark mode based on time
-- [ ] Add more sophisticated color harmony algorithms
-- [ ] Support for multiple accent colors simultaneously
