@@ -15,11 +15,18 @@ const BLOG_DIR = path.join(process.cwd(), 'src/content/blog')
 export interface BlogPostMeta {
   title: string
   description: string
-  date: string
+  datetime: string
   category: Category
   tags: Tag[]
   published: boolean
   slug: string
+  readingTime: number
+}
+
+export function calculateReadingTime(content: string): number {
+  const wordsPerMinute = 200
+  const words = content.trim().split(/\s+/).length
+  return Math.max(1, Math.ceil(words / wordsPerMinute))
 }
 
 export interface BlogPost extends BlogPostMeta {
@@ -62,7 +69,7 @@ export function getAllPosts(includeUnpublished = false): BlogPostMeta[] {
     .map((filename) => {
       const filePath = path.join(BLOG_DIR, filename)
       const fileContent = fs.readFileSync(filePath, 'utf-8')
-      const { data } = matter(fileContent)
+      const { data, content } = matter(fileContent)
 
       const slug = data.slug || getSlugFromFilename(filename)
       const rawCategory = data.category || ''
@@ -71,15 +78,16 @@ export function getAllPosts(includeUnpublished = false): BlogPostMeta[] {
       return {
         title: data.title || 'Untitled',
         description: data.description || '',
-        date: data.date || '',
+        datetime: data.datetime || '',
         category: validateCategory(rawCategory, filename),
         tags: validateTags(rawTags, filename),
         published: data.published !== false,
         slug,
+        readingTime: calculateReadingTime(content),
       } as BlogPostMeta
     })
     .filter((post) => includeUnpublished || post.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => new Date(b.datetime).getTime() - new Date(a.datetime).getTime())
 
   return posts
 }
@@ -105,11 +113,12 @@ export function getPostBySlug(slug: string): BlogPost | null {
       return {
         title: data.title || 'Untitled',
         description: data.description || '',
-        date: data.date || '',
+        datetime: data.datetime || '',
         category: validateCategory(rawCategory, filename),
         tags: validateTags(rawTags, filename),
         published: data.published !== false,
         slug: postSlug,
+        readingTime: calculateReadingTime(content),
         content,
       }
     }
@@ -136,4 +145,23 @@ export function getPostsByCategory(category: string): BlogPostMeta[] {
 
 export function getPostsByTag(tag: Tag): BlogPostMeta[] {
   return getAllPosts().filter((post) => post.tags.includes(tag))
+}
+
+export interface AdjacentPosts {
+  previous: BlogPostMeta | null
+  next: BlogPostMeta | null
+}
+
+export function getAdjacentPosts(slug: string): AdjacentPosts {
+  const posts = getAllPosts()
+  const currentIndex = posts.findIndex((post) => post.slug === slug)
+
+  if (currentIndex === -1) {
+    return { previous: null, next: null }
+  }
+
+  return {
+    previous: currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null,
+    next: currentIndex > 0 ? posts[currentIndex - 1] : null,
+  }
 }

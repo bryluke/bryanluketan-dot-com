@@ -8,6 +8,19 @@
   margin: 0 auto;
 }
 
+.backLink {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-user);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: var(--space-lg);
+  transition: opacity 0.2s ease;
+}
+
+.backLink:hover {
+  opacity: 0.7;
+}
+
 .title {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
@@ -79,4 +92,20 @@
 .postCategory {
   color: var(--color-accent-user);
   text-transform: lowercase;
+}
+
+.postCategoryLink {
+  color: var(--color-accent-user);
+  text-transform: lowercase;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.postCategoryLink:hover {
+  opacity: 0.7;
+}
+
+.postReadingTime {
+  color: var(--color-text);
+  opacity: 0.7;
 }

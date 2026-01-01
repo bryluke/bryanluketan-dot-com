@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   description: 'Thoughts on building, learning, and everything in between.',
 }
 
-function formatDate(dateString: string): string {
-  const date = new Date(dateString)
+function formatDatetime(datetimeString: string): string {
+  const date = new Date(datetimeString)
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -33,11 +33,14 @@ export default function BlogPage() {
               <Link href={`/blog/${post.slug}`} className={styles.postLink}>
                 <h2 className={styles.postTitle}>{post.title}</h2>
                 <p className={styles.postDescription}>{post.description}</p>
-                <div className={styles.postMeta}>
-                  <time className={styles.postDate}>{formatDate(post.date)}</time>
-                  <span className={styles.postCategory}>{post.category}</span>
-                </div>
               </Link>
+              <div className={styles.postMeta}>
+                <time className={styles.postDate}>{formatDatetime(post.datetime)}</time>
+                <Link href={`/blog/category/${post.category}`} className={styles.postCategoryLink}>
+                  {post.category}
+                </Link>
+                <span className={styles.postReadingTime}>{post.readingTime} min read</span>
+              </div>
             </article>
           ))}
         </div>

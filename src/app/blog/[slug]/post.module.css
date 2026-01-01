@@ -48,6 +48,17 @@
 .category {
   color: var(--color-accent-user);
   text-transform: lowercase;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.category:hover {
+  opacity: 0.7;
+}
+
+.readingTime {
+  color: var(--color-text);
+  opacity: 0.7;
 }
 
 .tags {
@@ -62,6 +73,12 @@
   background: var(--color-accent-subtle);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.tag:hover {
+  opacity: 0.7;
 }
 
 .content {
@@ -148,4 +165,46 @@
   height: auto;
   border-radius: var(--radius-md);
   margin: var(--space-md) 0;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  text-decoration: none;
+  max-width: 45%;
+  transition: opacity 0.2s ease;
+}
+
+.navLink:hover {
+  opacity: 0.7;
+}
+
+.navLinkPrev {
+  align-items: flex-start;
+}
+
+.navLinkNext {
+  align-items: flex-end;
+  margin-left: auto;
+}
+
+.navLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+.navTitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-user);
 }

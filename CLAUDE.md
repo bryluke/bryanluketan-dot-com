@@ -52,10 +52,30 @@ Navigation uses `usePathname()` to detect active page. Active items render as `<
 MDX-based blog using `gray-matter` (frontmatter parsing) + `next-mdx-remote` (rendering).
 
 - **Posts location**: `src/content/blog/*.mdx`
-- **Blog lib** (`src/lib/blog.ts`): `getAllPosts()`, `getPostBySlug()`, `getPostsByCategory()`, `getPostsByTag()`
-- **Frontmatter**: title, description, date, category, tags, published, slug (optional, defaults to filename)
+- **Blog lib** (`src/lib/blog.ts`): `getAllPosts()`, `getPostBySlug()`, `getPostsByCategory()`, `getPostsByTag()`, `getAdjacentPosts()`, `calculateReadingTime()`
+- **Frontmatter**: title, description, datetime (ISO format), category, tags, published, slug (optional, defaults to filename)
 - **Unpublished posts**: Set `published: false` to hide from listing
 - **Strict validation**: Categories and tags must be defined in `src/content/config.ts`. Build fails on unknown values.
+- **Filter pages**: `/blog/category/[category]` and `/blog/tag/[tag]` for browsing by taxonomy
+- **Reading time**: Calculated at 200 words per minute, displayed on listings and posts
+- **Post navigation**: Previous/next links at bottom of each post (chronological order)
+
+### RSS Feed
+
+The site provides an RSS feed at `/feed.xml` for subscribers.
+
+- **Route handler**: `src/app/feed.xml/route.ts` generates XML dynamically
+- **Autodiscovery**: `<link rel="alternate" type="application/rss+xml">` in site metadata
+- **Content**: Includes title, description, link, publication date, and category for each post
+- **Caching**: 1-hour cache (`Cache-Control: public, max-age=3600`)
+
+### SEO & Analytics
+
+- **JSON-LD**: Blog posts include `BlogPosting` structured data for rich search results
+- **Canonical URLs**: Each post has a canonical URL to prevent duplicate content
+- **OpenGraph**: Posts have article-specific OG metadata (type, publishedTime, authors)
+- **Sitemap**: Dynamic sitemap at `/sitemap.xml` includes all posts, categories, and tags
+- **Analytics**: Vercel Analytics + Speed Insights (privacy-friendly, no cookies)
 
 ### Path Aliases
 
