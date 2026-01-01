@@ -1,4 +1,5 @@
 export const CATEGORIES = [
+  'personal',
   'tech',
   'faith',
   'career',

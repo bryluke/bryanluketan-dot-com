@@ -23,6 +23,8 @@
 - Active page highlighting in navigation (renders as non-clickable span)
 - Custom 404 page
 - About page
+- Projects page (placeholder)
+- Arcade page (placeholder)
 
 ### Blog System
 - MDX-based blog with gray-matter + next-mdx-remote
@@ -49,7 +51,8 @@
 ## What's Next
 
 ### Core Pages
-- Projects page with portfolio showcase
+- Projects page content (portfolio showcase)
+- Arcade page content (games and experiments)
 
 ### Content
 - MDX for project descriptions
@@ -59,9 +62,9 @@
 - Breadcrumb navigation
 
 ### Blog Enhancements
+- Code syntax highlighting
 - Sort options (chronological / reverse)
-- Featured posts on landing page (layout update)
-- Devlog series for site development
+- Featured posts on landing page
 - Table of contents for long posts
 - Draft preview mode (view unpublished posts locally)
 - Related posts (suggest by shared tags)
