@@ -2,6 +2,32 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Site Vision
+
+**Motto: "Get good, get out."**
+
+This site is a sandbox and catalog for finished, self-contained products — games, tools, experiments. It's where the owner explores web and game development publicly, building verifiable proof of competence through shipped work.
+
+### Guiding Principles
+
+1. **Ship complete.** Define "done" before starting. No "I'll add that later." Scope tight, polish what's there.
+2. **V2 is a new product.** If expanding something, build it fresh. The original stays finished.
+3. **No ongoing commitments.** Each project is self-contained, not an ongoing service to maintain.
+4. **Build in public.** Document learnings. Show the work, not just the results.
+
+### Project Boundaries
+
+When building games or interactive projects:
+
+- **Games**: Built as React/Canvas components, inline on their pages in `/arcade`
+- **No passwords**: Use display names and device tokens for leaderboards/scores
+- **OAuth only**: If real authentication is needed, use OAuth providers
+- **Separate apps**: If real user data or money is involved, spin up a separate app with proper infrastructure — don't bolt it onto this site
+
+### Current Focus
+
+First project: One game, one week, one core mechanic. Ship it.
+
 ## Commands
 
 ```bash
@@ -74,8 +100,8 @@ The site provides an RSS feed at `/feed.xml` for subscribers.
 - **Home** (`/`): Introduction
 - **About** (`/about`): Bio and background
 - **Blog** (`/blog`): Post listing with category/tag filters
-- **Projects** (`/projects`): Portfolio showcase (placeholder)
-- **Arcade** (`/arcade`): Games and experiments (placeholder)
+- **Projects** (`/projects`): Tools and utilities (placeholder)
+- **Arcade** (`/arcade`): Games catalog — each game is a finished, self-contained artifact (placeholder)
 
 ### SEO & Analytics
 
@@ -89,6 +115,41 @@ The site provides an RSS feed at `/feed.xml` for subscribers.
 ### Path Aliases
 
 Use `@/src/` for imports (e.g., `import { useThemeStore } from '@/src/stores/theme'`).
+
+## Writing Style
+
+When drafting or editing blog posts, match these patterns observed across existing content:
+
+### Voice & Tone
+
+- **First person, conversational.** Write like talking to a friend, not presenting to an audience
+- **Honest about struggles.** Vulnerability is a feature, not a bug. Acknowledge fears, doubts, and gaps directly
+- **Reflective, not performative.** Process thoughts out loud rather than presenting polished conclusions
+- **Avoids corporate language.** No buzzwords, no "leverage," no "synergy." Plain words
+
+### Structure
+
+- **Short declarative sentences for emphasis.** "That's the commitment." "This site is where that happens."
+- **"Not X, but Y" for contrast.** "Not a polished portfolio for appearances, but real, finished things."
+- **Section headers are short phrases.** "The Fear", "Root Problem", "The Way Out"
+- **Horizontal rule (---) before closing.** Signals the wrap-up
+- **Closing line echoes the title/theme.** Brings it full circle
+
+### Punctuation & Rhythm
+
+- **Ellipsis (...)** for trailing thoughts or pauses. "I've dug my foundations in a really different domain... my religion."
+- **Avoid em dashes (—)**. They've become an AI-writing tell. Use these instead:
+  - Commas or parentheses for asides
+  - Period + new sentence for pivots. "Not because I think I'm about to. But because I know how much I depend on it."
+  - Colons for introducing explanations
+- **Bold for key phrases.** Use sparingly to highlight the core point of a paragraph
+- **Short paragraphs.** One idea per paragraph. Let it breathe
+
+### Endings
+
+- Often invites reader engagement or accountability
+- Punchy, not preachy. "The getting good starts now."
+- Sometimes asks for feedback or connection without being needy
 
 ## Coding Rules
 

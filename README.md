@@ -1,6 +1,8 @@
 # Bryan Luke Tan - Personal Website
 
-A personal website and blog built with Next.js, serving as a space for writing, projects, and experimentation.
+A personal sandbox and catalog built with Next.js — a place to explore web and game development publicly, shipping finished games, tools, and experiments.
+
+**2026 Motto: "Get good, get out."**
 
 ## Features
 
@@ -41,10 +43,12 @@ Open [http://localhost:3000](http://localhost:3000)
 ```
 src/
 ├── app/                    # Next.js App Router
+│   ├── arcade/            # Games catalog (finished, self-contained games)
 │   ├── blog/              # Blog listing and posts
 │   │   ├── [slug]/        # Individual post pages
 │   │   ├── category/      # Category filter pages
 │   │   └── tag/           # Tag filter pages
+│   ├── projects/          # Tools and utilities
 │   ├── about/             # About page
 │   ├── feed.xml/          # RSS feed route
 │   ├── sitemap.ts         # Dynamic sitemap
