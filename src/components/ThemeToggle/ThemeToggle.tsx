@@ -12,10 +12,10 @@ export default function ThemeToggle() {
       aria-label={`Switch to ${mode === 'light' ? 'dark' : 'light'} mode`}
     >
       <span className={styles.icon}>
-        {mode === 'light' ? '🌙' : '☀️'}
+        {mode === 'light' ? '☀️' : '🌙'}
       </span>
       <span className={styles.label}>
-        {mode === 'light' ? 'Dark' : 'Light'}
+        {mode === 'light' ? 'Light' : 'Dark'}
       </span>
     </button>
   )
