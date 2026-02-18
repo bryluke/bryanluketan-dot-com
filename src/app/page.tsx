@@ -12,17 +12,21 @@ export default function Home() {
   return (
     <div className={styles.root}>
       <div className={styles.intro}>
-        Hey there, I'm Bryan.
+        Hey there, I&apos;m Bryan.
       </div>
       <div className={styles.description}>
-        I'm a developer based in Singapore, hoping to fall back in love with building things.
-        <br /><br />
-        After years of shipping other people's products, I'm making a space to call my own; building tools I find useful, games I'd want to play,and whatever else pulls my attention.
-        <br /><br />
-        I am challenging myself to think out loud publicly. Sometimes it's technical learnings, and other times it won't be. If any of it is useful to you, even better.
-        <br /><br />
-        Look around. Stay as long as you like.<br/>
-        And if you're up for it, let's connect!
+        <p>
+          I&apos;m a web tech lead in Singapore. Recently got the title, and honestly... the imposter syndrome is loud. So instead of faking it till I make it, I plan to keep sucking at programming (YSAP-inspired) until I get good.
+        </p>
+        <p>
+          This is my "open-concept workshop". I choose topics to research and write about what I learn along the way while building stuff. No tutorials or polished takes. Just honest exploration of whatever&apos;s in front of me.
+        </p>
+        <p>
+          Right now I&apos;m starting with web analytics and SEO. After that, wherever curiosity and work lead.
+        </p>
+        <p>
+          <a href="/explore">See what I&apos;m exploring</a>, or come back regularly to check out for changes!
+        </p>
       </div>
     </div>
   );

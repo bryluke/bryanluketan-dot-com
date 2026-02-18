@@ -1,23 +1,8 @@
 export const TOPICS = [
   {
-    slug: 'web-analytics-and-seo',
-    name: 'Web Analytics & SEO',
-    description: 'Understanding how the web sees you. Tracking, measuring, and making things findable.',
-  },
-  {
-    slug: 'react-patterns',
-    name: 'React Patterns',
-    description: 'Going deeper than "it works". Understanding why patterns exist and when they break.',
-  },
-  {
-    slug: 'design-patterns-and-ui',
-    name: 'Design Patterns & UI',
-    description: 'The intersection of design thinking and implementation.',
-  },
-  {
-    slug: 'web-technologies',
-    name: 'Web Technologies',
-    description: 'The platform underneath the frameworks.',
+    slug: 'html-and-css',
+    name: 'HTML & CSS',
+    description: 'The foundations that everyone skips and then regrets.',
   },
   {
     slug: 'javascript-and-typescript',
@@ -25,14 +10,29 @@ export const TOPICS = [
     description: 'The language itself, beyond framework-specific usage.',
   },
   {
-    slug: 'html-and-css',
-    name: 'HTML & CSS',
-    description: 'The foundations that everyone skips and then regrets.',
-  },
-  {
     slug: 'data-structures-and-algorithms',
     name: 'Data Structures & Algorithms',
     description: 'Not for interviews. For understanding how things work.',
+  },
+  {
+    slug: 'web-technologies',
+    name: 'Web Technologies',
+    description: 'The platform underneath the frameworks.',
+  },
+  {
+    slug: 'design-patterns-and-ui',
+    name: 'Design Patterns & UI',
+    description: 'The intersection of design thinking and implementation.',
+  },
+  {
+    slug: 'react-patterns',
+    name: 'React Patterns',
+    description: 'Going deeper than "it works". Understanding why patterns exist and when they break.',
+  },
+  {
+    slug: 'web-analytics-and-seo',
+    name: 'Web Analytics & SEO',
+    description: 'Understanding how the web sees you. Tracking, measuring, and making things findable.',
   },
   {
     slug: 'games',

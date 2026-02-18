@@ -83,6 +83,19 @@ The technological shift that's impossible to ignore.
 
 ---
 
+## Future topics to consider
+
+Not ready to add yet, but worth keeping in mind as gaps that matter for a tech lead:
+
+- **Testing & Quality** - Unit, integration, e2e, test architecture, what's worth testing and what isn't
+- **System Design & Architecture** - API design, database patterns, caching strategies, technical decision-making
+- **Backend & Infrastructure** - Node.js patterns, databases, auth flows, deployment, monitoring
+- **Developer Tooling & Workflow** - Git strategies, CI/CD, linting, monorepos, package management
+
+Some of these may emerge naturally as sub-topics within existing explorations. Add them when the need is felt, not before.
+
+---
+
 ## What's next
 
 **Starting with: Web Analytics & SEO**
