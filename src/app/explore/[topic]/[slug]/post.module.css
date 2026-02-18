@@ -45,15 +45,9 @@
   opacity: 0.7;
 }
 
-.category {
+.topic {
   color: var(--color-accent-user);
   text-transform: lowercase;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.category:hover {
-  opacity: 0.7;
 }
 
 .readingTime {
@@ -73,12 +67,6 @@
   background: var(--color-accent-subtle);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.tag:hover {
-  opacity: 0.7;
 }
 
 .content {

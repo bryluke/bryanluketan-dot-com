@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`
   },
   description: siteConfig.description,
-  keywords: ["Bryan Luke Tan", "developer", "software engineering", "portfolio", "blog", "career switching", "web development"],
+  keywords: ["Bryan Luke Tan", "developer", "software engineering", "portfolio", "explore", "learning", "career switching", "web development"],
   authors: [{ name: siteConfig.author }],
   creator: siteConfig.author,
   openGraph: {

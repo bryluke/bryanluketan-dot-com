@@ -1,4 +1,4 @@
-import { getAllPosts } from '@/src/lib/blog'
+import { getAllPosts } from '@/src/lib/explore'
 import { siteConfig } from '@/src/config/site'
 
 function escapeXml(text: string): string {
@@ -19,11 +19,11 @@ export async function GET() {
       return `
     <item>
       <title>${escapeXml(post.title)}</title>
-      <link>${siteConfig.url}/blog/${post.slug}</link>
-      <guid isPermaLink="true">${siteConfig.url}/blog/${post.slug}</guid>
+      <link>${siteConfig.url}/explore/${post.topic}/${post.slug}</link>
+      <guid isPermaLink="true">${siteConfig.url}/explore/${post.topic}/${post.slug}</guid>
       <description>${escapeXml(post.description)}</description>
       <pubDate>${pubDate}</pubDate>
-      <category>${escapeXml(post.category)}</category>
+      <category>${escapeXml(post.topic)}</category>
     </item>`
     })
     .join('')

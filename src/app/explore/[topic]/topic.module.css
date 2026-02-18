@@ -1,0 +1,103 @@
+.root {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  background: var(--color-background);
+  color: var(--color-text);
+  padding: var(--space-xl) var(--space-lg);
+  box-sizing: border-box;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.backLink {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-user);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: var(--space-lg);
+  transition: opacity 0.2s ease;
+}
+
+.backLink:hover {
+  opacity: 0.7;
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-user);
+  margin: 0 0 var(--space-md) 0;
+}
+
+.description {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  opacity: 0.8;
+  line-height: 1.6;
+  margin: 0 0 var(--space-xl) 0;
+}
+
+.empty {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.post {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-lg);
+}
+
+.post:last-child {
+  border-bottom: none;
+}
+
+.postLink {
+  text-decoration: none;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.postLink:hover {
+  opacity: 0.8;
+}
+
+.postTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--space-sm) 0;
+  transition: color 0.2s ease;
+}
+
+.postLink:hover .postTitle {
+  color: var(--color-accent-user);
+}
+
+.postDescription {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1.6;
+}
+
+.postMeta {
+  display: flex;
+  gap: var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+.postDate {
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+.postReadingTime {
+  color: var(--color-text);
+  opacity: 0.7;
+}

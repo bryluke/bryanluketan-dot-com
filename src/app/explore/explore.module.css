@@ -8,58 +8,44 @@
   margin: 0 auto;
 }
 
-.backLink {
-  font-size: var(--font-size-sm);
-  color: var(--color-accent-user);
-  text-decoration: none;
-  display: inline-block;
-  margin-bottom: var(--space-lg);
-  transition: opacity 0.2s ease;
-}
-
-.backLink:hover {
-  opacity: 0.7;
-}
-
 .title {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-accent-user);
+  margin: 0 0 var(--space-md) 0;
+}
+
+.intro {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  opacity: 0.8;
+  line-height: 1.6;
   margin: 0 0 var(--space-xl) 0;
 }
 
-.empty {
-  font-size: var(--font-size-md);
-  color: var(--color-text);
-  opacity: 0.7;
-}
-
-.posts {
+.topics {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
 }
 
-.post {
+.topicCard {
+  display: block;
+  text-decoration: none;
   border-bottom: 1px solid var(--color-border);
   padding-bottom: var(--space-lg);
-}
-
-.post:last-child {
-  border-bottom: none;
-}
-
-.postLink {
-  text-decoration: none;
-  display: block;
   transition: opacity 0.2s ease;
 }
 
-.postLink:hover {
+.topicCard:last-child {
+  border-bottom: none;
+}
+
+.topicCard:hover {
   opacity: 0.8;
 }
 
-.postTitle {
+.topicName {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-text);
@@ -67,45 +53,19 @@
   transition: color 0.2s ease;
 }
 
-.postLink:hover .postTitle {
+.topicCard:hover .topicName {
   color: var(--color-accent-user);
 }
 
-.postDescription {
+.topicDescription {
   font-size: var(--font-size-md);
   color: var(--color-text);
-  margin: 0 0 var(--space-md) 0;
+  margin: 0 0 var(--space-sm) 0;
   line-height: 1.6;
 }
 
-.postMeta {
-  display: flex;
-  gap: var(--space-md);
+.topicCount {
   font-size: var(--font-size-sm);
-}
-
-.postDate {
-  color: var(--color-text);
-  opacity: 0.7;
-}
-
-.postCategory {
-  color: var(--color-accent-user);
-  text-transform: lowercase;
-}
-
-.postCategoryLink {
-  color: var(--color-accent-user);
-  text-transform: lowercase;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.postCategoryLink:hover {
-  opacity: 0.7;
-}
-
-.postReadingTime {
   color: var(--color-text);
   opacity: 0.7;
 }

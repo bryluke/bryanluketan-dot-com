@@ -9,9 +9,7 @@ import styles from './Header.module.css'
 
 const NAV_ITEMS = [
   { href: '/', label: 'Home' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/arcade', label: 'Arcade' },
+  { href: '/explore', label: 'Explore' },
   { href: '/about', label: 'About' },
 ]
 

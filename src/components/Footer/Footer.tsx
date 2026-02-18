@@ -5,8 +5,7 @@ import styles from './Footer.module.css'
 const QUICK_NAV_ITEMS = [
   { href: '/', label: 'Home', icon: '🏠' },
   { href: '/about', label: 'About', icon: '👤' },
-  { href: '/projects', label: 'Projects', icon: '💼' },
-  { href: '/blog', label: 'Blog', icon: '📝' },
+  { href: '/explore', label: 'Explore', icon: '🔍' },
   { href: 'mailto:hello@bryanluketan.com', label: 'Contact', icon: '✉️' },
 ]
 

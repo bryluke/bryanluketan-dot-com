@@ -1,96 +1,92 @@
 # Roadmap
 
-## What's Built
+A living map of topics to explore. Not a curriculum to complete, but a compass for what to build next. Topics get added as curiosity leads. Each one is explored through actual projects, demos, and writeups.
 
-### Foundation
-- Next.js 15 with App Router
-- Vanilla CSS architecture with CSS layers (reset, base)
-- Design tokens system (`src/styles/tokens.css`) with fluid typography using `clamp()`
-- Custom fonts: Fira Code, Inconsolata via `next/font`
+## How this works
 
-### Theme System
-- Light/dark mode toggle with `data-theme` attribute
-- User-customizable accent colors with HSL-based contrast adjustment
-- Zustand store with localStorage persistence
-- Four color variants: base, light, dark, subtle
-- FOUC prevention via blocking script in `<head>`
-
-### Layout & Components
-- Fixed header with logo, navigation links, theme controls
-- Footer with desktop/mobile layouts and contact email
-- Mobile slide-out menu
-- Color picker dropdown
-- Active page highlighting in navigation (renders as non-clickable span)
-- Custom 404 page
-- About page
-- Projects page (placeholder)
-- Arcade page (placeholder)
-
-### Blog System
-- MDX-based blog with gray-matter + next-mdx-remote
-- Post listing with date, category, and description
-- Individual post pages with full MDX rendering
-- Frontmatter: title, description, datetime (ISO format for sub-day precision), category, tags, published, slug (optional)
-- Posts stored in `src/content/blog/`
-- Strict category/tag validation via `src/content/config.ts` (build fails on invalid values)
-- Filter pages by category (`/blog/category/[category]`) and tag (`/blog/tag/[tag]`)
-- Reading time estimate based on word count (200 wpm)
-- Previous/next post navigation on individual posts
-- RSS feed at `/feed.xml` with autodiscovery
-
-### SEO & PWA
-- Metadata, robots.txt, sitemap.xml
-- Dynamic sitemap including all blog posts, categories, and tags
-- JSON-LD structured data for blog posts (BlogPosting schema)
-- Canonical URLs and OpenGraph metadata for posts
-- PWA manifest and icons
-- Vercel Speed Insights + Analytics (privacy-friendly, no cookies)
+Each topic lives at `/explore/[topic]`. Within a topic, individual posts document specific learnings, projects, or experiments. The goal isn't comprehensive coverage. It's honest exploration of whatever's in front of me.
 
 ---
 
-## What's Next
+## Topics
 
-### Core Pages
-- Projects page content (portfolio showcase)
-- Arcade page content (games and experiments)
+### Web Analytics & SEO
+Understanding how the web sees you. Tracking, measuring, and making things findable.
+- How web analytics actually works (not just installing a script)
+- Building a dashboard for this site's own data
+- SEO fundamentals: schemas, structured data, sitemaps, OpenGraph
+- Search Console, indexing, and what Google actually cares about
+- Privacy-friendly analytics vs. the tracking industry
 
-### Content
-- MDX for project descriptions
+### React Patterns
+Going deeper than "it works". Understanding why patterns exist and when they break.
+- Component composition patterns
+- State management approaches and tradeoffs
+- Performance patterns (memoization, suspense, streaming)
+- Custom hooks that actually make sense
+- Server components vs. client components (when and why)
 
-### Navigation
-- Page transition animations
-- Breadcrumb navigation
+### Design Patterns & UI
+The intersection of design thinking and implementation.
+- Layout systems (grid, flexbox, and when to use which)
+- Animation and interaction patterns
+- Responsive design beyond media queries
+- Accessibility as a design constraint
+- Design systems and component libraries (building one from scratch)
 
-### Blog Enhancements
-- Code syntax highlighting
-- Sort options (chronological / reverse)
-- Featured posts on landing page
-- Table of contents for long posts
-- Draft preview mode (view unpublished posts locally)
-- Related posts (suggest by shared tags)
-- Series/collections (group related posts, e.g., project devlogs)
-- Newsletter signup
+### Web Technologies
+The platform underneath the frameworks.
+- Browser APIs worth knowing (Intersection Observer, Web Workers, etc.)
+- Networking: HTTP, WebSockets, SSE, caching
+- Storage: cookies, localStorage, IndexedDB, and when each fits
+- Security: CORS, CSP, authentication patterns
+- Web performance: Core Web Vitals, what actually matters
 
-### Zettelkasten Features
-- Wiki-style links (`[[slug]]`) between posts
-- Backlink indexing and display
-- Link graph visualization
+### JavaScript & TypeScript
+The language itself, beyond framework-specific usage.
+- TypeScript patterns that actually help (not just satisfying the compiler)
+- Async patterns: promises, generators, streams
+- The event loop and how JS actually runs
+- Module systems and bundling
+- Testing strategies
 
-### Enhancements
-- Image galleries with lightbox
-- Code syntax highlighting for blog
-- Code block copy button
-- Search functionality
-- Pagination for blog listing
-- Open Graph images (auto-generated or custom per-post)
+### HTML & CSS
+The foundations that everyone skips and then regrets.
+- Semantic HTML and why it matters
+- CSS architecture (layers, cascade, specificity)
+- Modern CSS features (container queries, :has(), nesting)
+- CSS animations and transitions
+- Forms and native browser capabilities
 
-### SEO & Growth (Organic)
-- Meta description optimization per page
-- Heading hierarchy audit
-- Internal linking strategy
-- Submit to Google Search Console
-- Performance audit (Core Web Vitals)
+### Data Structures & Algorithms
+Not for interviews. For understanding how things work.
+- Common structures and when they show up in real code
+- Algorithm patterns that appear in everyday work
+- Big O in practice (not just theory)
+- Problems worth solving for understanding, not memorization
 
-### Analytics
-- Goal tracking (email clicks, time on page)
-- Monthly review habit (what's working, what's not)
+### Games
+Building things that are fun. Learning graphics, physics, and interaction design.
+- Canvas and WebGL basics
+- Game loops and frame management
+- Physics and collision detection
+- Input handling and game feel
+- Shipping a complete, playable thing
+
+### AI & Machine Learning
+The technological shift that's impossible to ignore.
+- Building with LLM APIs (prompting, tool use, agents)
+- The Claude Agent SDK (personal project #1)
+- AI-assisted development workflows
+- Understanding what AI can and can't do
+- Building useful AI-powered tools
+
+---
+
+## What's next
+
+**Starting with: Web Analytics & SEO**
+
+It's meta (the site itself is the data source), it's practical (directly useful for growth), and it touches real infrastructure (not just a tutorial exercise).
+
+After that: wherever curiosity and work lead.
